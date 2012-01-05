@@ -8,7 +8,7 @@ class VolumePrice < ActiveRecord::Base
   
   def validate
     return if open_ended?
-    errors.add(:range, "must be in one of the following formats: (a..b), (a...b), (a+)") unless /\([0-9]+\.{2,3}[0-9]+\)/ =~ range
+    errors.add(:range, I18n.t("range_validation_error")) unless /\([0-9]+\.{2,3}[0-9]+\)/ =~ range
   end
   
   def include?(quantity)
